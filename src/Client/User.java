@@ -1,10 +1,15 @@
 package Client;
 
+import Client.item.Weapon;
+
+import java.util.Random;
+
 /**
  * Created by Administrator on 2017/10/12.
  */
 public class User {
     private String name;
+    private static int HP=100;
     private int Skill;
     private int Lv;
     private int Hitrate;
@@ -41,6 +46,27 @@ public class User {
         Hitrate = hitrate;
     }
     public User(){
+    }
+    public Weapon GetWeapon(){
+        Weapon weapon=null;
+        Random random=new Random();
+        switch (random.nextInt(4)){
+            case 1:
+                weapon=new Weapon("AKM",48);
+                break;
+            case 2:
+                weapon=new Weapon("M16A4",41);
+                break;
+            case 3:
+                weapon=new Weapon("UMP9",35);
+                break;
+            case 4:
+                weapon=new Weapon("SKS",55);
+                break;
+        }
+        return weapon;
+    }
+    public void attack(User tar){
 
     }
 }
