@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class User {
     private String name;
-    private static int HP=100;
+    private int HP=100;
     private int Skill;
     private int Lv;
     private int Hitrate;
@@ -67,6 +67,13 @@ public class User {
         return weapon;
     }
     public void attack(User tar){
-
+        Weapon weapon=GetWeapon();
+        tar.HP=HP-weapon.getDamage();
+        System.out.println(this.getName()+"攻击了"+tar.getName()+",造成"+weapon.getDamage()+"点伤害");
+    }
+    public void die(){
+        if (this.HP<=0){
+            System.out.println(this.getName()+"已阵亡");
+        }
     }
 }
