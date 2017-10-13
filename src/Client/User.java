@@ -4,77 +4,71 @@ import Client.item.Weapon;
 
 import java.util.Random;
 
+import static Client.Test.weapons;
+
 /**
  * Created by Administrator on 2017/10/12.
  */
 public class User {
-    private String name;//è§’è‰²åç§°
-    private int HP=100;//è§’è‰²è¡€é‡
-    private int Skill;//è§’è‰²çš„ç†Ÿç»ƒåº¦
-    private int Lv;//æ ¹æ®ç†Ÿç»ƒåº¦ä¸Šå‡è¾¾åˆ°çš„çº§åˆ«
-    private int Hitrate;//æ ¹æ®çº§åˆ«é«˜ä½ä¼šå½±å“å‘½ä¸­ç‡çš„åå·®å€¼.
+    private String name;//½ÇÉ«Ãû³Æ
+    private int HP=100;//½ÇÉ«ÑªÁ¿
+    private int Skill;//½ÇÉ«µÄÊìÁ·¶È
+    private int Lv;//¸ù¾İÊìÁ·¶ÈÉÏÉı´ïµ½µÄ¼¶±ğ
+    private int Hitrate;//¸ù¾İ¼¶±ğ¸ßµÍ»áÓ°ÏìÃüÖĞÂÊµÄÆ«²îÖµ.
+    private Weapon weapon;
 
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getSkill() {
         return Skill;
     }
-
     public void setSkill(int skill) {
         Skill = skill;
     }
-
     public int getLv() {
         return Lv;
     }
-
     public void setLv(int lv) {
         Lv = lv;
     }
-
     public int getHitrate() {
         return Hitrate;
     }
-
     public void setHitrate(int hitrate) {
         Hitrate = hitrate;
     }
+
     public User(){
     }
+
+    public User(String name){
+        this.name = name;
+    }
+
     public Weapon GetWeapon(){
-        Weapon weapon=null;
         Random random=new Random();
-        switch (random.nextInt(4)){
-            case 1:
-                weapon=new Weapon("AKM",48);
-                break;
-            case 2:
-                weapon=new Weapon("M16A4",41);
-                break;
-            case 3:
-                weapon=new Weapon("UMP9",35);
-                break;
-            case 4:
-                weapon=new Weapon("SKS",55);
-                break;
-        }
+        weapon = weapons.get(random.nextInt(weapons.size()));
         return weapon;
     }
+
     public void attack(User tar){
-        Weapon weapon=GetWeapon();
-        //éœ€è¦è·å¾—ä¸€ä¸ªuserçš„listæ¥äº§ç”Ÿä¸€ä¸ªéšæœºæ”»å‡»çš„tar.
+        GetWeapon();    //»ñµÃÒ»°ÑÎäÆ÷
+        //ĞèÒª»ñµÃÒ»¸öuserµÄlistÀ´²úÉúÒ»¸öËæ»ú¹¥»÷µÄtar.
         tar.HP=HP-weapon.getDamage();
-        System.out.println(this.getName()+"æ”»å‡»äº†"+tar.getName()+",é€ æˆ"+weapon.getDamage()+"ç‚¹ä¼¤å®³");
+        System.out.println(this.getName()+"¹¥»÷ÁË"+tar.getName()+",Ôì³É"+weapon.getDamage()+"µãÉËº¦");
     }
-    public void die(){
+
+    public boolean die(){
         if (this.HP<=0){
-            System.out.println(this.getName()+"å·²é˜µäº¡");
+            this.HP = 0;
+            System.out.println(this.getName()+"ÒÑÕóÍö");
+            return true;
+        }else {
+            return false;
         }
     }
 }
