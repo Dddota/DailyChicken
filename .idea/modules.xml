@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DailyChicken.iml" filepath="$PROJECT_DIR$/DailyChicken.iml" />
-      <module fileurl="file://E://DailyChicken/DailyChicken.iml" filepath="E://DailyChicken/DailyChicken.iml" />
     </modules>
   </component>
 </project>

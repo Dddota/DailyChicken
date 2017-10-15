@@ -17,7 +17,7 @@ public class SingleMode {
     public static void fight(){}
 
     public static void main(String[] args) {
-            while (userNum > 1){
+        Weapon.weapons();//ÎäÆ÷¿â³õÊ¼»¯
                 for (int i = 0; i <users.length ; i++) {
                     users[i]=new User();
                     threads[i]=new Thread(users[i]);
@@ -27,10 +27,6 @@ public class SingleMode {
                     users[i].setWeapon();
                     threads[i].start();
                 }
-            }
-        for (int i = 0; i <users.length ; i++) {
-                if (!users[i].Death){
-            System.out.println(users[i].getName() + "³Ô¼¦ÁË");
-        }}
+
     }
 }
