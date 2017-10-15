@@ -94,7 +94,7 @@ public class User implements Runnable{
             }
             tar.die();
             this.kill++;
-            this.setExp(10.0);
+            this.setExp(this.getExp()+10.0);
             System.out.println(this.getName()+"使用"+weapon.getName()+",击杀了"+tar.getName());
             System.out.println(this.getName()+"的经验为："+this.getExp());
         }
@@ -109,16 +109,25 @@ public class User implements Runnable{
         int cd=(int) (1000+Math.random() * 4000);
         try {
             Thread.currentThread().sleep(cd);
+
+        while (!Death){
+            int i =new Random().nextInt(users.length);
+            if (users[i] != null && users[i] != this&& !users[i].Death) {
+                this.attack(users[i]);
+                Thread.currentThread().sleep(cd);
+            }
+        }
+            if (userNum==1){
+                for (int i = 0; i <users.length ; i++) {
+                    if (!users[i].Death){
+                        System.out.println(users[i].getName() + "吃鸡了");
+                    }
+                }
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        while (!Death){
-        for (int i = 0; i <users.length; i++) {
-            if (users[i] != null && users[i] != this&& !users[i].Death) {
-                this.attack(users[i]);
-            }
-        }
         }
     }
-}
+
 
