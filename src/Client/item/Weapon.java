@@ -9,7 +9,7 @@ import java.util.Random;
 public class Weapon {
     private String name;//ÎäÆ÷Ãû³Æ
     private int damage;//ÎäÆ÷ÉËº¦
-    private int Cd;//ÎäÆ÷¹¥»÷¼ä¸ô.
+    private int cd;//ÎäÆ÷¹¥»÷¼ä¸ô.
     static ArrayList<Weapon> weapons = new ArrayList<Weapon>();
     public String getName() {
         return name;
@@ -18,16 +18,25 @@ public class Weapon {
         return damage;
     }
 
-    public Weapon(String name, int damage) {
+    public int getCd() {
+        return cd;
+    }
+
+    public void setCd(int cd) {
+        this.cd = cd;
+    }
+
+    public Weapon(String name, int damage, int cd) {
         this.name = name;
         this.damage = damage;
+        this.cd=cd;
     }
     //½«ÎäÆ÷¼ÓÈë¼¯ºÏÖĞ
     public  static ArrayList weapons(){
-        Weapon akm = new Weapon("AKM", 48);
-        Weapon m16A4 = new Weapon("M16A4", 41);
-        Weapon ump9 = new Weapon("UMP9", 35);
-        Weapon sks = new Weapon("SKS", 55);
+        Weapon akm = new Weapon("AKM", 48,100);
+        Weapon m16A4 = new Weapon("M16A4", 41,75);
+        Weapon ump9 = new Weapon("UMP9", 35,92);
+        Weapon sks = new Weapon("SKS", 55,90);
         weapons.add(akm);
         weapons.add(m16A4);
         weapons.add(ump9);

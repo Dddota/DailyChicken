@@ -20,13 +20,14 @@ public class SingleMode {
         Weapon.weapons();//ÎäÆ÷¿â³õÊ¼»¯
                 for (int i = 0; i <users.length ; i++) {
                     users[i]=new User();
+                    users[0]=new User("",550);
                     threads[i]=new Thread(users[i]);
                     threads[i].setName(getName());
                     threads[0].setName("Dd");
                     users[i].setName(threads[i].getName());
                     users[i].setWeapon();
+                    users[i].info();
                     threads[i].start();
                 }
-
     }
 }
